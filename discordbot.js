@@ -7,8 +7,17 @@ const client = new Client({
 
 const prefix = "Yuu";
 
+const greetings = [
+    "Hey there!",
+    "Wazaaaaaaap",
+    "Hi",
+    "Hey there good looking :smirk:",
+    "UwU :sparkles:",
+    "UwU *WOMP*  **WOMP**",
+];
+
 client.on("ready", () => {
-    console.log("Logged in as " + client.user.tag + "! Press ctrl+c to end the bot");
+    console.log("Logged in as " + client.user.tag + "! Press ctrl+c to end the bot.");
 });
 
 client.on("messageCreate", (msg) => {
@@ -20,7 +29,7 @@ client.on("messageCreate", (msg) => {
     let message = msg.content.slice(prefix.length + 1);
 
     if(message == "hi") {
-        msg.channel.send("Hey there");
+        msg.channel.send(greetings[Math.floor(Math.random() * greetings.length)]);
         return;
     }
 
