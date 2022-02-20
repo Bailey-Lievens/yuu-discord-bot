@@ -8,19 +8,20 @@ const client = new Client({
 const prefix = "Yuu";
 
 client.on("ready", () => {
-    console.log("Logged in as " + client.user.tag + "!");
+    console.log("Logged in as " + client.user.tag + "! Press ctrl+c to end the bot");
 });
 
 client.on("messageCreate", (msg) => {
 
     //If message doesn't start with prefix return
-    if (!msg.content.startsWith(prefix)) return;
+    if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
     //Remove prefix from message + 1 for the space
     let message = msg.content.slice(prefix.length + 1);
 
     if(message == "hi") {
         msg.channel.send("Hey there");
+        return;
     }
 
   });
